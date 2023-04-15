@@ -1,0 +1,86 @@
+﻿@model IEnumerable<EmployeeModel>
+
+@{
+    ViewData["Title"] = "GetAllEmployee";
+}
+
+
+
+
+@*<h1>List Of Employee</h1>
+<link href="~/css/Site.css" rel="stylesheet" />
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            @foreach (var n in Model)
+            {
+                <tbody>
+                    <tr>
+                       
+                        <td>@n.Empname</td>
+                        <td>@n.Email</td>
+                        <td>@n.Age</td>
+                        <td>@n.Salary</td>
+                        <td><a asp-controller="Employee" asp-action="GetEmployeeById" asp-route-Empid="@n.Empid">Details</a></td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</div>*@
+
+<p>
+    <a asp-action="AddNewEmployee">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Empname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-Empid="@item.Empid">Edit</a> |
+                <a asp-action="GetEmployeeById" asp-route-id="@item.Empid" class="btn btn-sm btn-outline-primary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Empid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

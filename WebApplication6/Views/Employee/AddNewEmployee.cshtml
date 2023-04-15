@@ -1,0 +1,91 @@
+﻿@model NewEmployeeModel
+@{
+    ViewData["Title"] = "Add New Employee";
+}
+
+<div class="container">
+    <h2>Add New Name</h2> <hr />
+    @if (ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations...</strong> You have added new Employee<br />
+            Click <a>here </a>to view details
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+   
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Empname"></label>
+            <input asp-for="Empname" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Age"></label>
+            <input asp-for="Age" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Salary"></label>
+            <input asp-for="Salary" class="form-control"></input>
+        </div><br />
+
+        <div class="form-group">
+            <input type="submit" value="Add Name" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+
+<p>
+    <a asp-action="GetAllEmployee">Back To List</a>
+</p>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Empname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Empid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Empid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Empid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@
